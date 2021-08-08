@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buss Mall</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://via.placeholder.com/200x100/000" alt="Logo">
+        <h1>Bus Mall</h1>
+        <nav>
+            <ul>
+                <a href="">Home</a>
+                <a href="">About</a>
+                <a href="">Contact Us</a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <p>Dear customer, we need your help in voting which product, of the three displayed images, that you would be most likely to purchase. There are a total of 25 selections made, then you can review the results and restart voting.</p>
+        </section>
+        
+        <section id=imagesArea>
+            <img src="" alt="image 1" id="firstImage">
+            <img src="" alt="image 2" id="secondImage">
+            <img src="" alt="image 3" id="thirdImage">
+        </section>
+        <section id=final>
+            <div><p id='counterBox'></p></div>
+            <button id='button1' hidden>Results</button>
+            <button id='button2' hidden>Reset</button>
+        </section>
+        <section id=resultsArea>
+            <h2>Results</h2>
+            <nav>
+                <ul id=results></ul>
+            </nav>
+        </section>
+
+    </main>
+    <footer>
+        <p>All Rights Reserved &copy;2021</p>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>
