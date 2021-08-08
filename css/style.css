@@ -1,0 +1,129 @@
+body {
+    width: 960px;
+    margin: auto;
+    font-family: 'Lato', sans-serif;
+    /* background-color: #E6DDC6; */
+    background-color: hsla(0, 9%, 68%, 10%);
+    color: #1C1427;
+    font-size: 16.5px;
+    line-height: 20px;
+}
+
+main {
+    display: grid;
+    grid-template-rows: 100px auto 50px;
+    gap: 30px;
+}
+
+header {
+    /* background-color: #C2B8A3; */
+    background-color: #B4A5A5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    font-weight: bold;
+    /* color: #47597E; */
+    color: #40394A;
+}
+
+header nav a {
+    text-decoration: none;
+    /* color: hsl(220, 28%, 39%); */
+    color: hsl(265, 13%, 26%);
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 500ms;
+}
+
+header nav a:hover {
+    background-color: hsla(0, 9%, 78%, 65%);
+    color: hsl(265, 13%, 20%);
+    font-size: 18px;
+}
+
+main section:nth-child(1) {
+    position: relative;
+    top: 40px;
+}
+
+#imagesArea {
+    width: 960px;
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;  
+}
+
+#imagesArea img {
+    width: 305px;
+    height: 250px;
+    object-fit: cover;
+    border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
+#imagesArea img:hover { 
+    outline: none;
+    border-color: hsl(265, 69%, 77%);
+    box-shadow: 0 0 10px hsl(265, 13%, 56%);
+}
+
+#final {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #53415d;
+    border: 2px solid #53415d;
+    color: white;
+    font-size: 16px;
+}
+
+#counterBox {
+    display: block;
+    border-radius: 50%;
+    padding: 13px;
+    background-color: hsla(278, 28%, 31%, 65%);
+    color: white;
+    font-size: 16px;
+}
+
+#resultsArea {
+    height: auto;
+    font-size: 18px;
+    margin-left: 310px;
+}
+
+#resultsArea h2 {
+    font-weight: bold;
+    font-size: 18px;
+    color:#40394A;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-right: 342px;
+}
+
+#resultsArea li {
+    padding: 3px;
+}
+
+footer {
+    /* background-color: #C2B8A3; */
+    background-color: #B4A5A5;
+    color: #40394A;
+    margin-top: 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
