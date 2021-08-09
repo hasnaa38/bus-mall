@@ -63,14 +63,14 @@ function render () {
   console.log('These are the randoms, current randoms: ' + currentRands + ' previous randoms: ' + previousRands);
 
   //Appending the random selected image to its area
-  firstImage.src = ImagesGen.all[currentRands[0]].imgSrc;
-  secondImage.src = ImagesGen.all[currentRands[1]].imgSrc;
-  thirdImage.src = ImagesGen.all[currentRands[2]].imgSrc;
+  firstImage.src = ImagesGen.all[firstRandom].imgSrc;
+  secondImage.src = ImagesGen.all[secondRandom].imgSrc;
+  thirdImage.src = ImagesGen.all[thirdRandom].imgSrc;
 
   //Increment the display counter for the chosen objects
-  ImagesGen.all[currentRands[0]].displayed++;
-  ImagesGen.all[currentRands[1]].displayed++;
-  ImagesGen.all[currentRands[2]].displayed++;
+  ImagesGen.all[firstRandom].displayed++;
+  ImagesGen.all[secondRandom].displayed++;
+  ImagesGen.all[thirdRandom].displayed++;
 
   counterBox.textContent = `${currentRound}`; //Add current round counter
 
@@ -81,15 +81,18 @@ render();
 imagesArea.addEventListener('click', itemPicked);
 function itemPicked (e) {
   e.preventDefault();
-  let thisImage = eval(e.target.id).src.split('/')[4].split('.')[0]; // to get the name of the chosen image
-  console.log('this image is a ' + thisImage);
 
-  //To determine the chosen image from the images array
-  for (let i=0; i<imagesArray.length; i++) {
-    if (ImagesGen.all[i].name === thisImage) {
-      ImagesGen.all[i].clicks++;
-      console.log('the clicks for ' + ImagesGen.all[i].name + ' are equal to ' + ImagesGen.all[i].clicks); }
+  //Incrementing the clicks
+  if (e.target.id === 'firstImage') {
+    ImagesGen.all[firstRandom].clicks++;
   }
+  else if (e.target.id === 'secondImage') {
+    ImagesGen.all[secondRandom].clicks++;
+  }
+  else if (e.target.id === 'thirdImage') {
+    ImagesGen.all[thirdRandom].clicks++;
+  }
+ 
   //Selecting the clicked image while we still have rounds
   if ((e.target.id === 'firstImage' || e.target.id === 'secondImage' || e.target.id === 'thirdImage') && (currentRound<totalRounds-1)) {
     currentRound++;
