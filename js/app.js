@@ -22,19 +22,20 @@ let imagesArray = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg',
   'tauntaun.jpg', 'unicorn.jpg', 'water-can.jpg', 'wine-glass.jpg'];
 
 //--------> Constructor function <--------
-function ImagesGen (name, imageSrc) {
+function ImagesGen (name, imgSrc, displayed=0, clicks=0) {
   this.name = name; // name of the product
-  this.imgSrc = imageSrc; // path of the image
-  this.displayed = 0; // how many times the images was displayed on the screen
-  this.clicks = 0; // how many times the visitor picked this image
+  this.imgSrc = imgSrc; // path of the image
+  this.displayed = displayed;
+  this.clicks = clicks;
   ImagesGen.all.push( this );
 }
 ImagesGen.all = [];
+getData();
 
 //Creating the objects:
-for (let i=0; i<imagesArray.length; i++) {
-  new ImagesGen (imagesArray[i].split('.')[0], `img/${imagesArray[i]}`);
-}
+// for (let i=0; i<imagesArray.length; i++) {
+//   new ImagesGen (imagesArray[i].split('.')[0], `img/${imagesArray[i]}`);
+// }
 
 //--------> Rendering function <--------
 let firstRandom; let secondRandom; let thirdRandom;
@@ -74,6 +75,8 @@ function render () {
 
   counterBox.textContent = `${currentRound}`; //Add current round counter
 
+  localStorage.data = JSON.stringify(ImagesGen.all);
+
 }
 render();
 
@@ -92,9 +95,8 @@ function itemPicked (e) {
   else if (e.target.id === 'thirdImage') {
     ImagesGen.all[thirdRandom].clicks++;
   }
- 
-  //Selecting the clicked image while we still have rounds
-  if ((e.target.id === 'firstImage' || e.target.id === 'secondImage' || e.target.id === 'thirdImage') && (currentRound<totalRounds-1)) {
+
+  if (currentRound < totalRounds -1 ) {
     currentRound++;
     render();
   }
@@ -123,6 +125,7 @@ function showResults (e) {
 //--------> Reset Button <--------
 button2.addEventListener('click', reloadPage);
 function reloadPage () {
+  currentRound = 0;
   window.location.reload();
 }
 
@@ -159,4 +162,18 @@ function chartGen () {
       }]
     },
   });
+}
+
+function getData() {
+  if (localStorage.data) {
+    let data = JSON.parse(localStorage.data);
+    for (let i=0; i<data.length; i++) {
+      new ImagesGen(data[i].name, data[i].imgSrc, data[i].displayed, data[i].clicks);
+    }
+  }
+  else {
+    for (let i=0; i<imagesArray.length; i++) {
+      new ImagesGen (imagesArray[i].split('.')[0], `img/${imagesArray[i]}`);
+    }
+  }
 }
